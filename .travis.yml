@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+ - "stable"
+
+install: 
+  - npm install --force
+
+script: npm test
+
+after_success: 
+  - npm run coveralls
