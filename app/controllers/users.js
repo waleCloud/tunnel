@@ -110,6 +110,18 @@ module.exports = {
       }).catch(next);
   },
 
+  getUser(req, res) {
+    models.User.findOne({
+      where: { id: req.params.id }
+    })
+    .then((user) => {
+      return res.status(200).send({
+        success: true
+      })
+    })
+    .catch((err) => res.status(400).send(err));
+  },
+
   getToken(req, res) {
     const demoToken = jwt.sign({ id: 1 }, process.env.SECRET);
     res.send({ demoToken });

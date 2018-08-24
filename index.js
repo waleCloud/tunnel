@@ -33,7 +33,7 @@ app.get('*', (req, res) => res.status(404).send({
 
 const server = app.listen(process.env.PORT || 7000, () => {
     console.log(`Listening on port ${server.address().port}`);
-    console.log(process.env);
+    // console.log(process.env);
 });
 
 export default app;
