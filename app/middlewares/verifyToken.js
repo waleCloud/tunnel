@@ -4,13 +4,13 @@
 import jwt from 'jsonwebtoken';
 
   /**
-   * verify a request token
+   * verify a request token from header [x-access-token]
    * @param {*} req
    * @param {*} res
    * @param {*} next
    */
   const verifyToken = (req, res, next) => {
-    const token = req.headers['x-access-token'];
+    const token = req.headers['x-access-token']; // get token from headers
     if (!token) {
       return res.status(403).send({
         auth: false,

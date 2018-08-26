@@ -7,9 +7,13 @@
 import Sequelize from 'sequelize';
 import bycrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import passport from 'passport';
+import passportJWT from 'passport-jwt';
+
 import models from '../models';
 
 const { Op } = Sequelize;
+const localStrategy = require('passport-local').Strategy;
 
 let token;
 
@@ -45,6 +49,7 @@ module.exports = {
             }))
               .then(
                 () => res.status(201).send({
+                  success: true,
                   message: 'user created succesfully',
                   data: user,
                   auth: true,
@@ -95,6 +100,7 @@ module.exports = {
               expiresIn: 86400, // 24 hours
             });
             res.status(200).send({
+              success: true,
               auth: true,
               token,
             });

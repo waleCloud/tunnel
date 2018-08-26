@@ -10,6 +10,7 @@ import bodyParser from 'body-parser';
 import { } from  'dotenv/config';
 
 import routes from './app/routes';
+import passport from './app/controllers/passportController';
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(logger('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
+app.use(passport);
 app.use(routes);
 
 /**
